@@ -13,9 +13,9 @@ public class CreateUsers {
         Connection connection = new Connection();
 
         UserModel newUser = new UserModel();
-        newUser.setName("user");
+        newUser.setName("moray.grieve");
         newUser.setRoles(new HashSet(Arrays.asList("user")));
-        newUser.setPassword(new BCryptPasswordEncoder().encode("us3r"));
+        newUser.setPassword(new BCryptPasswordEncoder().encode("archie123"));
         connection.getMapper().save(newUser);
     }
 }
