@@ -1,9 +1,8 @@
-Useful Notes related to BLADE
-=============================
+Useful Notes
+============
 
 SSL and HTTPS notes
 -------------------
-
 Note that we really want to get a verified certificate, but short term we can
 use an unsigned certificate. To generate the java keystore use the below;
 
@@ -32,39 +31,4 @@ Because we are not using a verified certificate we point the requests module to 
 key of the keystore.
 
 There a some scripts in the src/main/python/ directory as examples of using the server REST API.
-
-
-FLAC (Free Lossless Audio Codec)
---------------------------------
-We can potentially store metadata in the metaAudioEntry files if we convert wav to flac using a suitable
-encoder. The main idea of this is to allow building the index if we loose the meta data tables.
-
-For a general description:
-https://xiph.org/flac/documentation_format_overview.html
-
-For a recent java wav to flac implementation;
-https://www.nayuki.io/page/simple-flac-implementation
-https://www.nayuki.io/res/simple-flac-implementation/SimpleEncodeWavToFlac.java
-
-For an older java flac encoder implementation;
-http://javaflacencoder.sourceforge.net/
-
-It's not clear this is the best approach, partly because conversion of wav to flac in the blade
-server could fail silently, and corrupt metaAudioEntry files would be saved without out knowledge. Also
-blade may end up storing more than just metaAudioEntry files, e.g. feature lists. From this perspective
-it may be better to have the notion of storing companion files to the main object, e.g.
-<uuid>.wav, <uuid>.json, <uuid>.lab etc. The json file could be a write once subset of the
-meta-data to allow recreation of the index.
-
-
-Code Deploy
------------
-Basically pulls down a tar archive from an S3 bucket, unpacks, the runs based on an
-appspec.yml configuration file.
-
-[CodeDeployUserPolicy] -   a user needs access to the code deploy service
-[CodeDeployServiceRole] -  the code deploy service needs access to EC2 instances
-[CodeDeployEC2Role] -      EC2 instances need access to S3 to pull the release (via the policy
-                           [CodeDeployEC2Policy])
-
 
