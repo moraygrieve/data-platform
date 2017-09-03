@@ -1,0 +1,14 @@
+files:
+  - source: \
+    destination: /opt/blade/blade-${version}
+
+hooks:
+  ApplicationStop:
+    - metaLocationEntry: bin/stop.sh
+      timeout: 60
+  ApplicationStart:
+    - metaLocationEntry: bin/start.sh
+      timeout: 60
+  ValidateService:
+    - metaLocationEntry: bin/status.sh
+      timeout: 60
