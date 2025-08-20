@@ -1,7 +1,7 @@
 #!/bin/bash
 makeDir() { if [ ! -d $1 ]; then mkdir -pm 755 $1; fi }
 
-VERSION=${pom.version}
+VERSION=1.0-SNAPSHOT
 LOG_DIR=logs; makeDir $LOG_DIR
 VAR_DIR=var; makeDir $VAR_DIR
 DATE=`date +%Y%m%d-%H%m%S`
@@ -16,7 +16,7 @@ else
         echo BLADE data platform is running, please shut it down before attempting to start ...
     else
         CWD=`pwd`
-        java -Dlog4j.configuration=file:///$CWD/etc/log4j.properties -jar $CWD/lib/blade-$VERSION.jar >> $LOG_DIR/blade-$DATE.out 2>> $LOG_DIR/blade-$DATE.err &
+        java -Dlog4j.configuration=file:///$CWD/etc/log4j.properties -jar $CWD/target/lib/blade-$VERSION.jar >> $LOG_DIR/blade-$DATE.out 2>> $LOG_DIR/blade-$DATE.err &
         echo $! > $VAR_DIR/blade.pid
     fi
 fi

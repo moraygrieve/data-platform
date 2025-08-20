@@ -12,18 +12,9 @@
 
     <files>
         <file>
-            <source>src/main/resources/appspec.yml</source>
-            <outputDirectory></outputDirectory>
-            <filtered>true</filtered>
-        </file>
-        <file>
             <source>src/main/resources/application.properties</source>
             <outputDirectory>etc</outputDirectory>
             <filtered>true</filtered>
-        </file>
-        <file>
-            <source>src/main/resources/blade.jks</source>
-            <outputDirectory>etc</outputDirectory>
         </file>
         <file>
             <source>src/main/resources/log4j.properties</source>
