@@ -45,7 +45,7 @@
                     <outputDirectory>${project.build.directory}/lib</outputDirectory>
                     <archive>
                         <manifest>
-                            <mainClass>com.reikon.data.Application</mainClass>
+                            <mainClass>com.riekon.aws.Application</mainClass>
                             <addClasspath>true</addClasspath>
                         </manifest>
                         <manifestEntries>
